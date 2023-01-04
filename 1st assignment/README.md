@@ -30,7 +30,7 @@ Expected Output:
 
 $hexMessage= '596f7520636f6e76657274656420697420636f72726563746c7921'; Decode it back to read the message. 
 5- We have HTML content stored inside a variable. For example: 
-$htmlContent = "&lt;h1&gtPHP track&lt;/h1&gt;&lt;p&gt;PHP is an interpreted language&lt;/p&gt;"; Find a way to remove all HTML tags from the content (keeping only the text inside it)
+$htmlContent = "&lt;h1&gt;PHP track&lt;/h1&gt;&lt;p&gt;PHP is an interpreted language&lt;/p&gt;"; Find a way to remove all HTML tags from the content (keeping only the text inside it)
 
 6- Some of our website users submit their form inputs with extra spaces (before or after the actual data). For example:
 
