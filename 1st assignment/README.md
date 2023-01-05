@@ -1,5 +1,19 @@
 # First week assignment
 
+Some basic assignments/problems to prove the basic knowledge of PHP
+
+## Getting started
+
+The directory includes a few files and every file starts with a number indicating the problem number in the assignment (found below).
+
+To test the output of any file you need in the terminal to run this simple command `php index.php`
+
+This index file is the entry point for all files. After this command, you will get a message asking for the desired file number you want to execute
+
+and you should follow the notifications you might get and then you will get the answer to this particular problem.
+
+## The assignments
+
 1-Write a PHP program to print 'Hello' on screen and then print your name on a separate line.
 
 Expected Output :
