@@ -29,17 +29,17 @@ $instructors = [
 <body>
 
   <ul>
-    <?php foreach ($arr as $key => $value) : ?>
+    <?php foreach ($instructors as $key => $value) : ?>
 
-      <?php if (is_array($key)) : ?>
+      <?php if (is_array($value)) : ?>
         <li>
           <?= $key ?>
           <ul>
-            <?php foreach ($key as $k => $v) : ?>
+            <?php foreach ($value as $k => $v) : ?>
               <li>
-                <?= $v ?>
+                <?= "$k: $v" ?>
               </li>
-            <?php endforeach; ?>
+            <?php endforeach ?>
           </ul>
         </li>
 
