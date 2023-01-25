@@ -10,7 +10,7 @@ if (!isset($_GET['id'])) {
 $products = $_SESSION['products'] ?? [];
 
 if (empty($products)) {
-    header('Location: ./../products.php');
+    header('Location: ./products.php');
     exit;
 }
 
@@ -37,7 +37,9 @@ if (!empty($_POST)) {
 
 ?>
 
-<?php include_once './../shared/nav.php' ?>
+<?php include_once './shared/header.php' ?>
+
+<?php include_once './shared/nav.php' ?>
 
 <?php if ($delete_product) : ?>
     <div class="text-center">
@@ -60,4 +62,4 @@ if (!empty($_POST)) {
     </div>
 <?php endif; ?>
 
-<?php include_once './../shared/footer.php' ?>
+<?php include_once './shared/footer.php' ?>

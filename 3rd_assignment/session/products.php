@@ -1,6 +1,8 @@
 <?php session_start(); ?>
 
-<?php include_once './../shared/nav.php' ?>
+<?php include_once './shared/header.php' ?>
+
+<?php include_once './shared/nav.php' ?>
 
 <header class="py-3 cart-header">
     <h3 class="text-center">E-Commerce cart</h3>
@@ -53,4 +55,4 @@
     <?php endif; ?>
 </table>
 
-<?php include_once './../shared/footer.php' ?>
+<?php include_once './shared/footer.php' ?>

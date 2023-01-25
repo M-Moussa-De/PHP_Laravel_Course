@@ -1,6 +1,8 @@
-<?php include_once './../shared/nav.php' ?>
+<?php include_once './shared/header.php' ?>
 
-<?php include_once './../forms_handler/add_product_handler.php' ?>
+<?php include_once './shared/nav.php' ?>
+
+<?php include_once './forms_handler/add_product_handler.php' ?>
 
 <section id="form">
     <form method="POST" enctype="multipart/form-data" id="add-product" autocomplete="off" spellcheck="off">
@@ -29,4 +31,4 @@
     </form>
 </section>
 
-<?php include_once './../shared/footer.php' ?>
+<?php include_once './shared/footer.php' ?>
