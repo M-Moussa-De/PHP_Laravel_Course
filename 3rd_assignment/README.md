@@ -26,8 +26,8 @@ This week handles the sessions and cookies topic.
 
 ### Screenshots
 
-    ![Add_Product](./assets/images/session_screenshots/add_product.png)
-    ![products](./assets/images/session_screenshots/products.png)
+    ![Add_Product](/assets/images/session_screenshots/add_product.png)
+    ![products](/assets/images/session_screenshots/products.png)
 
 ## Cookies directory
 
@@ -51,13 +51,13 @@ This week handles the sessions and cookies topic.
 
 ### Guideline
 
-1- Create a new account
-2- Login
-3- Use the form on the main page to update the BG of navbar
+    1- Create a new account
+    2- Login
+    3- Use the form on the main page to update the BG of navbar
 
 ### Screenshots
 
-    ![Login](./assets/images/cookies_screenshots/login.png)
-    ![Register](./assets/images/cookies_screenshots/register.png)
-    ![Home](./assets/images/cookies_screenshots/home.png)
-    ![Change BG](./assets/images/cookies_screenshots/change_bg.png)
+    ![Login](/assets/images/cookies_screenshots/login.png)
+    ![Register](/assets/images/cookies_screenshots/register.png)
+    ![Home](/assets/images/cookies_screenshots/home.png)
+    ![Change BG](/assets/images/cookies_screenshots/change_bg.png)
