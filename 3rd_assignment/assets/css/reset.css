@@ -108,3 +108,18 @@ i.bi-trash3:hover {
 header.cart-header h3 {
     font-family: cursive, sans-serif;
 }
+
+/* Main content */
+main#content .container{
+    width: 95%;
+}
+@media (min-width: 768px) {
+    main#content .container{
+        width: 30%;
+    }
+}
+
+main#content .container select, main#content .container select:focus {
+    box-shadow: none !important;
+    border: none !important;
+}

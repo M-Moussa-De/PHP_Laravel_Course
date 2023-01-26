@@ -7,6 +7,15 @@ if (!isset($_SESSION['id'])) {
     exit;
 }
 
+$color = 'black';
+
+if (!empty($_POST)) {
+    $color = filter_input(INPUT_POST, 'color', FILTER_SANITIZE_SPECIAL_CHARS);
+
+    // Expires within a day
+    setcookie('color', $color, time() + (60 * 60 * 24));
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +33,7 @@ if (!isset($_SESSION['id'])) {
 </head>
 
 <body>
-    <header class="bg-black">
+    <header class="bg-<?= $color ?>">
         <nav class="navbar navbar-expand-lg container">
             <div class="container-fluid">
                 <a class="navbar-brand" href="./">M&M</a>
@@ -56,10 +65,26 @@ if (!isset($_SESSION['id'])) {
         </nav>
     </header>
 
-    <main>
+    <main id="content">
 
-        <div class="text-center mt-5">
-            <p>Content to show...</p>
+        <div class="container mt-5">
+
+            <form method="POST">
+
+                <div class="mb-3">
+                    <select class="form-select" name="color">
+                        <option disabled selected>Change navbar background color</option>
+                        <option value="primary">Blue</option>
+                        <option value="info">Cyan</option>
+                        <option value="warning">Orange</option>
+                    </select>
+                </div>
+
+                <div class="d-flex justify-content-evenly">
+                    <input class="btn btn-sm btn-dark" type="submit" value="Change BG">
+                </div>
+            </form>
+
         </div>
 
 
