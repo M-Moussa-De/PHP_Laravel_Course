@@ -51,9 +51,9 @@ This week handles the sessions and cookies topic.
 
 ### Guideline
 
-    1- Create a new account
-    2- Login
-    3- Use the form on the main page to update the BG of navbar
+1- Create a new account
+2- Login
+3- Use the form on the main page to update the BG of navbar
 
 ### Screenshots
 
