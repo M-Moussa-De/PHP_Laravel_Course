@@ -26,8 +26,8 @@ This week handles the sessions and cookies topic.
 
 ### Screenshots
 
-    ![Add_Product](./images/session_screenshots/add_product.png)
-    ![products](./images/session_screenshots/products.png)
+    ![Add_Product](./screenshots/add_product.png)
+    ![products](./screenshots/products.png)
 
 ## Cookies directory
 
@@ -57,7 +57,7 @@ This week handles the sessions and cookies topic.
 
 ### Screenshots
 
-    ![Login](./images/cookies_screenshots/login.png)
-    ![Register](./images/cookies_screenshots/register.png)
-    ![Home](./images/cookies_screenshots/home.png)
-    ![Change BG](./images/cookies_screenshots/change_bg.png)
+    ![Login](./screenshots/login.png)
+    ![Register](./screenshots/register.png)
+    ![Home](./screenshots/home.png)
+    ![Change BG](./screenshots/change_bg.png)
