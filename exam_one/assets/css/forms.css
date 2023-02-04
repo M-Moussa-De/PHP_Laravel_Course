@@ -1,0 +1,12 @@
+form#login-form, form#signup-form {
+    width: 95%;
+    margin: 0 auto;
+    background-color: #eeeeee7d;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+}
+@media (min-width: 768px) {
+    form#login-form, form#signup-form  {
+        width: 40%;
+    }
+}

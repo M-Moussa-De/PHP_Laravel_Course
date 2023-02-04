@@ -10,6 +10,13 @@
 a {
     text-decoration: none;
 }
+input, textarea {
+    border: 1px solid #eee !important;
+}
+input:focus, input:active, textarea:focus, textarea:active {
+    box-shadow: none !important;
+    border: 1px solid #e2e2e2 !important;
+}
 
 h1 {
     font-size: 50px;
@@ -123,6 +130,7 @@ button.navbar-toggler:focus,button.navbar-toggler:active {
 @media (max-width: 1000px) {
     #hero {
         background: none;
+        height: 50vh;
     }
 }
 

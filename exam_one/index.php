@@ -1,6 +1,6 @@
-<?php include './includes/header.php' ?>
-<?php include './includes/navbar.php' ?>
-
+<?php include './config.php'; ?>
+<?php include ROOT_PATH .  DS . 'includes' . DS . 'header.php'; ?>
+<?php include ROOT_PATH .  DS . 'includes' . DS . 'navbar.php'; ?>
 
 <!-- Hero -->
 <section id="hero">
@@ -360,8 +360,4 @@
     </div>
 </section>
 
-
-
-
-
-<?php include './includes/footer.php' ?>
+<?php include ROOT_PATH .  DS . 'includes' . DS . 'footer.php'; ?>

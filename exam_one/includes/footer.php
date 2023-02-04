@@ -1,6 +1,10 @@
+<?php include './../config.php' ?>
+
 <footer class="section-p1">
     <div class="col">
-        <a href="index.html"><img class="logo" src="img/logo.png" alt=""></a>
+        <a href="index.html">
+            <img class="logo" src="<?= ROOT_PATH . DS . 'assets' . DS . 'img' . DS . 'logo.png' ?>" alt="logo">
+        </a>
         <h4>Contact</h4>
         <p><strong>Address: </strong>321 Nile Road, street 320, Cairo</p>
         <p><strong>Phone: </strong>0105487541</p>
@@ -26,8 +30,8 @@
     </div>
     <div class="col">
         <h4>My Account</h4>
-        <a href="auth/login.php">Login</a>
-        <a href="pages/cart.php">View Cart</a>
+        <a href="<?= ROOT_PATH . DS . 'auth' ?>">Login</a>
+        <a href="<?= ROOT_PATH . DS . 'pages' . DS . 'cart.php' ?>">View Cart</a>
         <a href="#">My Whishlist</a>
         <a href="#">Track My order</a>
         <a href="#">Help</a>
@@ -36,11 +40,11 @@
         <h4>Install App</h4>
         <p>From App Store Or Google Play</p>
         <div class="oo">
-            <img src="./assets/img/pay/app.jpg " alt=" ">
-            <img src="./assets/img/pay/play.jpg " alt=" ">
+            <img src="<?= ROOT_PATH . DS . 'assets' . DS . 'img' . DS . 'pay' . DS . 'app.jpg' ?> " alt=" ">
+            <img src="<?= ROOT_PATH . DS . 'assets' . DS . 'img' . DS . 'pay' . DS . 'play.jpg' ?> " alt=" ">
         </div>
         <p>Secure payment For your happy Service</p>
-        <img src="./assets/img/pay/pay.png " alt=" ">
+        <img src="<?= ROOT_PATH . DS . 'assets' . DS . 'img' . DS . 'pay' . DS . 'pay.png' ?>" alt=" ">
     </div>
 
     <div class="copyright">
@@ -48,12 +52,10 @@
     </div>
 </footer>
 
+<script src="<?= ROOT_PATH . DS .  'assets' . DS . 'js' . DS . 'all.min.js'; ?>"></script>
+<script src="<?= ROOT_PATH . DS .  'assets' . DS . 'js' . DS . 'bootstrap.bundle.min.js '; ?>"></script>
+<script src="<?= ROOT_PATH . DS .  'assets' . DS . 'js' . DS . 'main.js'; ?>"></script>
 
-<script src="./assets/js/all.min.js "></script>
-<script src="./assets/js/bootstrap.bundle.min.js "></script>
-<script src="./assets/js/main.js"></script>
 </body>
-
-</html>
 
 </html>
