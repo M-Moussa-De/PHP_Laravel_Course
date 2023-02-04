@@ -1,56 +1,36 @@
-
-
-<section id="header">
-<a href="index.html">
-    <img src="img/logo.png" alt="homeLogo">
-</a>
-
-<div>
-    <ul id="navbar">
-        <li class="link">
-            <a class="active " href="index.html"></a>
-        </li>
-        <li class="link">
-            <a href="shop.php"></a>
-        </li>
-        <li class="link">
-            <a href="blog.html">Blog</a>
-        </li>
-        <li class="link">
-            <a href="about.html">About</a>
-        </li>
-        <li class="link">
-            <a href="contact.html">Contact</a>
-        </li>
-        <li class="link">
-            <a href="signup.php">Signup</a>
-        </li>
-        <li class="link">
-            <a href="lang.php?lang=en">English</a>
-        </li>
-        <li class="link">
-            <a href="lang.php?lang=ar">Arabic</a>
-        </li>
-
-    <li class="link">
-            <a href="login.php">Login</a>
-        </li>
-
-
-        <li class="link">
-            <a id="lg-cart" href="cart.html">
-                <i class="fas fa-shopping-cart"></i> 
+<header id="header">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary w-100">
+        <div class="container-fluid">
+            <a href="index.html" class="navbar-brand">
+                <img src="./assets/img/logo.png" alt="homeLogo">
             </a>
-        </li>
-        <a href="#" id="close"><i class="fas fa-times"></i> </a>
-    </ul>
-
-</div>
-
-<div id="mobile">
-    <a href="cart.html">
-        <i class="fas fa-shopping-cart"></i>
-    </a>
-    <a href="#" id="bar"> <i class="fas fa-outdent"></i> </a>
-</div>
-</section>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="navbar-toggler-icon fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="navbar-nav w-100 justify-content-end mb-2 mb-lg-0" id="navbar">
+                    <li class="nav-item mt-3 mt-md-0">
+                        <a href="#">Shop</a>
+                    </li>
+                    <li class="nav-item mt-3 mt-md-0">
+                        <a href="about.html">About</a>
+                    </li>
+                    <li class="nav-item mt-3 mt-md-0">
+                        <a href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item mt-3 mt-md-0">
+                        <a href="login.php">Login</a>
+                    </li>
+                    <li class="nav-item mt-3 mt-md-0">
+                        <a href="signup.php">Signup</a>
+                    </li>
+                    <li class="nav-item mt-3 mt-md-0">
+                        <a id="lg-cart" href="cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

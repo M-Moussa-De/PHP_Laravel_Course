@@ -72,30 +72,20 @@ body {
 }
 
 #header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 80px;
     background-color: #E3E6F3;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
     z-index: 999;
+    padding: 0.6em 0;
     position: sticky;
     top: 0;
     left: 0;
 }
 
-#navbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#navbar li {
-    list-style: none;
+#header .navbar li {
     padding: 0 20px;
 }
 
-#navbar li a {
+#header .navbar li a {
     color: #1a1a1a;
     font-size: 18px;
     font-weight: 600;
@@ -103,18 +93,15 @@ body {
     text-decoration: none;
 }
 
-#navbar li a:hover,
-#navbar li a.active {
+#header .navbar li a:hover,
+#header .navbar li a.active {
     color: #088178;
 }
 
-#mobile {
-    display: none;
-}
-
-#close {
-    display: none;
-}
+button.navbar-toggler:focus,button.navbar-toggler:active {
+    outline: none !important;
+    box-shadow: none;
+ }
 
 #hero {
     /* background-image: url(../img/hero4.png); */
@@ -122,7 +109,7 @@ body {
     background-position: top 25% right 0;
     background-size: cover;
     width: 100%;
-    height: 90vh;
+    height: 50vh;
     padding: 0 80px;
     display: flex;
     align-items: flex-start;
@@ -961,48 +948,9 @@ footer .copyright p {
     .section-p1 {
         padding: 40px 40px;
     }
-    #navbar {
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-        flex-direction: column;
-        position: fixed;
-        right: -300px;
-        top: 0;
-        background-color: #E3E6F3;
-        width: 300px;
-        height: 100vh;
-        box-shadow: 0 40px 55px rgba(0, 0, 0, 0.1);
-        padding: 80px 0 0 10px;
-        transition: 0.5s ease;
-    }
-    li.link {
-        margin-bottom: 25px;
-    }
-    #navbar.active {
-        right: 0px;
-    }
-    #mobile {
-        display: flex;
-        /* justify-content: center; */
-        align-items: center;
-    }
-    #mobile a,
-    #mobile #bar {
-        color: #1a1a1a;
-        font-size: 24px;
-        margin-left: 20px;
-    }
-    #close {
-        display: initial;
-        position: absolute;
-        top: 30px;
-        left: 30px;
-        color: #222;
-        font-size: 24px;
-    }
-    #lg-cart {
-        display: none;
+
+    #header .navbar li.nav-item a {
+        margin-bottom: 5em !important;
     }
     #hero {
         height: 70vh;

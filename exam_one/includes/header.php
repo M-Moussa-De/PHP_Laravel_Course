@@ -3,13 +3,11 @@
 <head>
 
     <!-- Start Links -->
-    <link rel="stylesheet" href="css/splide.min.css">
-    <link rel="stylesheet" href="css/splide-core.min.css">
-    <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/font-awesome.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
 
     <!--Start Home Style -->
-    <link rel="stylesheet" href="css/index_style.css">
+    <link rel="stylesheet" href="./assets/css/index_style.css">
     <!-- End Home Style -->
 
     <!-- Start Google Fonts -->
@@ -20,7 +18,7 @@
 
     <!-- End Links -->
 
-    <title>Haga Helwa</title>
+    <title>M&M</title>
 
 </head>
 
