@@ -8,7 +8,7 @@
     <h2>Super value deals</h2>
     <h1>On all products</h1>
     <p>Save more woth coupons & up to 70% off!</p>
-    <button>Shop Now!</button>
+    <a href="#feature">Shop Now!</a>
 </section>
 <!-- End Hero -->
 

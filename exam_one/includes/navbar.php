@@ -10,7 +10,7 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="navbar-nav w-100 justify-content-end mb-2 mb-lg-0" id="navbar">
                     <li class="nav-item mt-3 mt-md-0">
-                        <a href="#">Shop</a>
+                        <a href="#feature">Shop</a>
                     </li>
                     <li class="nav-item mt-3 mt-md-0">
                         <a href="about.html">About</a>
