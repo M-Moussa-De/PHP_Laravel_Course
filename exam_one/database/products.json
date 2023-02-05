@@ -1,0 +1,33 @@
+{
+   "products":
+   {
+        "features" : [
+            {"id":1,"src":"f1.png", "title": "Free Shipping"},
+            {"id":2,"src":"f2.png", "title": "Online Order"},
+            {"id":3,"src":"f3.png", "title": "Save Money"},
+            {"id":4,"src":"f4.png", "title": "Promitions"},
+            {"id":5,"src":"f5.png", "title": "Happy Sell"},
+            {"id":6,"src":"f6.png", "title": "F7/24 Support"}
+        ],
+        "featuredProducts": [
+            {"id": 1, "src":"f1.jpg", "brand":"addidas", "title":"Cartoon Astronaut T-Shirt", "stars":5, "price": 105},
+            {"id": 2, "src":"f2.jpg", "brand":"addidas", "title":"Cartoon Astronaut T-Shirt", "stars":5, "price": 90},
+            {"id": 3, "src":"f3.jpg", "brand":"addidas", "title":"Cartoon Astronaut T-Shirt", "stars":5, "price": 217.99},
+            {"id": 4, "src":"f4.jpg", "brand":"addidas", "title":"Cartoon Astronaut T-Shirt", "stars":5, "price": 98.85},
+            {"id": 5, "src":"f5.jpg", "brand":"addidas", "title":"Cartoon Astronaut T-Shirt", "stars":5, "price": 46.89},
+            {"id": 6, "src":"f6.jpg", "brand":"addidas", "title":"Cartoon Astronaut T-Shirt", "stars":5, "price": 87.88},
+            {"id": 7, "src":"f7.jpg", "brand":"addidas", "title":"Cartoon Astronaut T-Shirt", "stars":5, "price": 110},
+            {"id": 8, "src":"f8.jpg", "brand":"addidas", "title":"Cartoon Astronaut T-Shirt", "stars":5, "price": 107}
+        ],
+        "newArrival": [
+            {"id": 1, "src":"n1.jpg", "brand":"addidas", "title":"Cartoon Astronaut T-Shirt", "stars":5, "price": 105},
+            {"id": 2, "src":"n2.jpg", "brand":"addidas", "title":"Cartoon Astronaut T-Shirt", "stars":5, "price": 90},
+            {"id": 3, "src":"n3.jpg", "brand":"addidas", "title":"Cartoon Astronaut T-Shirt", "stars":5, "price": 217.99},
+            {"id": 4, "src":"n4.jpg", "brand":"addidas", "title":"Cartoon Astronaut T-Shirt", "stars":5, "price": 98.85},
+            {"id": 5, "src":"n5.jpg", "brand":"addidas", "title":"Cartoon Astronaut T-Shirt", "stars":5, "price": 46.89},
+            {"id": 6, "src":"n6.jpg", "brand":"addidas", "title":"Cartoon Astronaut T-Shirt", "stars":5, "price": 87.88},
+            {"id": 7, "src":"n7.jpg", "brand":"addidas", "title":"Cartoon Astronaut T-Shirt", "stars":5, "price": 110},
+            {"id": 8, "src":"n8.jpg", "brand":"addidas", "title":"Cartoon Astronaut T-Shirt", "stars":5, "price": 107}
+        ]
+   }
+}
