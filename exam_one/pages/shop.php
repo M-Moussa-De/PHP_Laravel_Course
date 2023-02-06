@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <?php include './../config.php'; ?>
 <?php include ROOT_PATH .  DS . 'includes' . DS . 'header.php'; ?>
 <?php include ROOT_PATH .  DS . 'includes' . DS . 'navbar.php'; ?>
@@ -122,4 +121,4 @@
 </section>
 
 
-<?php include 'footer.php' ?>
+<?php include ROOT_PATH .  DS . 'includes' . DS . 'footer.php'; ?>

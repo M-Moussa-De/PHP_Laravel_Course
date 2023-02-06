@@ -1,9 +1,7 @@
-<?php include './../config.php' ?>
-
 <footer class="section-p1">
     <div class="col">
         <a href="index.html">
-            <img class="logo" src="<?= ROOT_PATH . DS . 'assets' . DS . 'img' . DS . 'logo.png' ?>" alt="logo">
+            <img class="logo" src="http://localhost:8080/projects/php_laravel_course/exam_one/assets/img/logo.png" alt="logo">
         </a>
         <h4>Contact</h4>
         <p><strong>Address: </strong>321 Nile Road, street 320, Cairo</p>
@@ -18,7 +16,6 @@
                 <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
-
     </div>
     <div class="col">
         <h4>About Us</h4>
@@ -30,8 +27,8 @@
     </div>
     <div class="col">
         <h4>My Account</h4>
-        <a href="<?= ROOT_PATH . DS . 'auth' ?>">Login</a>
-        <a href="<?= ROOT_PATH . DS . 'pages' . DS . 'cart.php' ?>">View Cart</a>
+        <a href="http://localhost:8080/projects/php_laravel_course/exam_one/auth">Login</a>
+        <a href="http://localhost:8080/projects/php_laravel_course/exam_one/pages/cart.php">View Cart</a>
         <a href="#">My Whishlist</a>
         <a href="#">Track My order</a>
         <a href="#">Help</a>
@@ -40,11 +37,11 @@
         <h4>Install App</h4>
         <p>From App Store Or Google Play</p>
         <div class="oo">
-            <img src="<?= ROOT_PATH . DS . 'assets' . DS . 'img' . DS . 'pay' . DS . 'app.jpg' ?> " alt=" ">
-            <img src="<?= ROOT_PATH . DS . 'assets' . DS . 'img' . DS . 'pay' . DS . 'play.jpg' ?> " alt=" ">
+            <img src="http://localhost:8080/projects/php_laravel_course/exam_one/assets/img/pay/app.jpg" alt=" ">
+            <img src="http://localhost:8080/projects/php_laravel_course/exam_one/assets/img/pay/play.jpg" alt=" ">
         </div>
         <p>Secure payment For your happy Service</p>
-        <img src="<?= ROOT_PATH . DS . 'assets' . DS . 'img' . DS . 'pay' . DS . 'pay.png' ?>" alt=" ">
+        <img src="http://localhost:8080/projects/php_laravel_course/exam_one/assets/img/pay/pay.png" alt=" ">
     </div>
 
     <div class="copyright">
@@ -52,9 +49,9 @@
     </div>
 </footer>
 
-<script src="<?= ROOT_PATH . DS .  'assets' . DS . 'js' . DS . 'all.min.js'; ?>"></script>
-<script src="<?= ROOT_PATH . DS .  'assets' . DS . 'js' . DS . 'bootstrap.bundle.min.js '; ?>"></script>
-<script src="<?= ROOT_PATH . DS .  'assets' . DS . 'js' . DS . 'main.js'; ?>"></script>
+<script src="http://localhost:8080/projects/php_laravel_course/exam_one/assets/js/all.min.js"></script>
+<script src="http://localhost:8080/projects/php_laravel_course/exam_one/assets/js/bootstrap.bundle.min.js"></script>
+<script src="http://localhost:8080/projects/php_laravel_course/exam_one/assets/js/main.js"></script>
 
 </body>
 

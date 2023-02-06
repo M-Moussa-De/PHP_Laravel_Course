@@ -1,80 +1,64 @@
-<?php include 'header.php' ?>
-<?php include 'navbar.php' ?>
+<?php include './../config.php'; ?>
+<?php include './../includes/header.php'; ?>
+<?php include './../includes/navbar.php'; ?>
 
-<section id="page-header" class="about-header"> 
-        <h2>#Cart</h2>
-        <p>Let's see what you have.</p>
-    </section>
- 
-    <section id="cart" class="section-p1">
-        <table width="100%">
-            <thead>
-                <tr>
-                    <td>Image</td>
-                    <td>Name</td>
-                    <td>Desc</td>
-                    <td>Quantity</td>
-                    <td>price</td>
-                    <td>Subtotal</td>
-                    <td>Remove</td>
-                    <td>Edit</td>
-                </tr>
-            </thead>
-   
+<section id="page-header" class="about-header">
+    <h2>#Cart</h2>
+    <p>Let's see what you have.</p>
+</section>
+
+<section id="cart" class="section-p1 mb-5">
+    <header class="py-3 cart-header">
+        <h3 class="text-center">E-Commerce cart</h3>
+    </header>
+
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr class="text-center">
+                <td scope="col">Image</td>
+                <td scope="col">Name</td>
+                <td scope="col">Desc</td>
+                <td scope="col">Quantity</td>
+                <td scope="col">price</td>
+                <td scope="col">Subtotal</td>
+                <td scope="col">Remove</td>
+                <td scope="col">Edit</td>
+            </tr>
+        </thead>
+
+        <?php if (isset($_SESSION['products'])) : ?>
             <tbody>
-                <tr>
-                    <td><img src="" alt="product1"></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                   
-                    
-                    <td></td>
-                    
-                    <!-- Remove any cart item  -->
-                    <td><button type="submit"  class="btn btn-danger">Remove</button></td>
-                    
-                    
-                
-                </tr>
+                <?php foreach ($_SESSION['products'] as $product) : ?>
+                    <tr class="text-center" style="line-height: 3;">
+                        <td>
+                            <?= $product['id'] ?>
+                        </td>
+                        <td>
+                            <img src="<?= $product['img'] ?>" title="<?= $product['title'] ?>" alt="<?= $product['title'] ?>" width="50" height="50" />
+                        </td>
+                        <td>
+                            <?= $product['title'] ?>
+                        </td>
+                        <td>
+                            <?= $product['quantity'] > 0 ? 'In stock' : 'Out of stock' ?>
+                        </td>
+                        <td>
+                            <?= $product['quantity'] ?>
+                        </td>
+                        <td>
+                            <?= '$' . $product['price'] ?>
+                        </td>
+                        <td>
+                            <a href='<?= "delete.php?id=" . $product['id'] ?>'>
+                                <i class="bi bi-trash3 text-danger"></i>
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
             </tbody>
-            <!-- confirm order  -->
-            <td><button type="submit" name="" class="btn btn-success">Confirm</button></td>
-            
-        </table>
-    </section>
+        <?php endif; ?>
 
-    <!-- <section id="cart-add" class="section-p1">
-        <div id="coupon">
-            <h3>Coupon</h3>
-            <input type="text" placeholder="Enter coupon code">
-            <button class="normal">Apply</button>
-        </div>
-        <div id="subTotal">
-            <h3>Cart totals</h3>
-            <table>
-                <tr>
-                    <td>Subtotal</td>
-                    <td>$118.25</td>
-                </tr>
-                <tr>
-                    <td>Shipping</td>
-                    <td>$0.00</td>
-                </tr>
-                <tr>
-                    <td>Tax</td>
-                    <td>$0.00</td>
-                </tr>
-                <tr>
-                    <td><strong>Total</strong></td>
-                    <td><strong>$118.25</strong></td>
-                </tr>
-            </table>
-            <button class="normal">proceed to checkout</button>
-        </div>
-    </section> -->
+    </table>
+</section>
 
-    <?php include "footer.php" ?>
-
+<?php include ROOT_PATH .  DS . 'includes' . DS . 'footer.php'; ?>

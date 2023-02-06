@@ -1,14 +1,13 @@
-<?php session_start(); ?>
 <?php include './../config.php'; ?>
-<?php include ROOT_PATH .  DS . 'includes' . DS . 'header.php'; ?>
-<?php include ROOT_PATH .  DS . 'includes' . DS . 'navbar.php'; ?>
+<?php include './../includes/header.php'; ?>
+<?php include './../includes/navbar.php'; ?>
 
 <?php
 
-// if (!isset($_GET['id'])) {
-//     header('Location:' . ROOT_PATH);
-//     exit;
-// }
+if (!isset($_GET['id'])) {
+    header('Location:' . ROOT_PATH);
+    exit;
+}
 
 
 $pro = [];
@@ -24,43 +23,74 @@ foreach ($products_json['products']['featuredProducts'] as $product) {
 
 ?>
 
-<section id="product1" class="section-p1 mt-5">
-    <div class="row">
+<main class="my-5 pt-4">
 
-        <div class="col-12 col-md-6">
-            <div>
-                <img src="<?= ROOT_PATH . DS . 'assets' . DS . 'img' . DS . 'products' . DS . $pro['src'] ?>" alt="p1" style="height: 250px" />
+    <div class="container my-5">
+
+        <?php if (!empty($pro)) : ?>
+
+            <!--Grid row-->
+            <div class="row gap-0 gap-md-5">
+                <!--Grid column-->
+                <div class="col-md-4 mb-4">
+                    <img src="<?= ROOT_PATH . DS . 'assets' . DS . 'img' . DS . 'products' . DS . $pro['src'] ?>" class="img-fluid" alt="product image" />
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-md-6 mb-4">
+                    <!--Content-->
+                    <div class="p-4">
+                        <div class="mb-3">
+                            <a href="">
+                                <span class="badge bg-info me-1">New</span>
+                            </a>
+                            <a href="">
+                                <span class="badge bg-danger me-1">Bestseller</span>
+                            </a>
+                        </div>
+
+                        <p class="lead">
+                            <span class="me-1">
+                                <del>
+                                    $ <?= $pro['price'] + ($pro['price'] * 0.15) ?>
+                                </del>
+                            </span>
+                            <span>
+                                <?= $pro['price'] ?>
+                            </span>
+                        </p>
+
+                        <strong>
+                            <p style="font-size: 20px;">Description</p>
+                        </strong>
+
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero eos atque quia ipsa sint voluptatibus! Beatae sit assumenda asperiores iure at maxime atque repellendus maiores quia sapiente.</p>
+
+                        <form class="d-flex justify-content-left">
+                            <!-- Default input -->
+                            <div class="form-outline me-1" style="width: 100px;">
+                                <input type="number" min="1" value="1" class="form-control" />
+                            </div>
+                            <button class="btn btn-success ms-1" type="submit">
+                                Add to cart
+                                <i class="fas fa-shopping-cart ms-1"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <!--Content-->
+                </div>
+                <!--Grid column-->
             </div>
-        </div>
 
-        <div class="col-12 col-md-6">
-            <div class="des">
-                <h5>
-                    <?= $product['title'] ?>
-                </h5>
-                <div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui modi sapiente laudantium nihil illo suscipit sed hic molestias quisquam corrupti aperiam nam et quae, officiis voluptate, quos saepe perferendis impedit animi eveniet maxime sit eum sint inventore. Corrupti similique ea autem. In maxime dignissimos nulla accusamus, expedita tenetur quis ducimus!</p>
-                </div>
-                <div class="star">
-                    <?php for ($i = 0; $i < $product['stars']; $i++) : ?>
-                        <i class="fas fa-star" style="color: rgb(243, 181, 25)"></i>
-                    <?php endfor; ?>
-                </div>
-                <h4 style="color: #088178">
-                    <?= $product['brand'] ?>
-                </h4>
-                <h4 style="color: #088178">
-                    $ <?= $product['price'] ?>
-                </h4>
-                <div>
-                    <span>-</span>
-                    <input min="1" value="1" readonly class="text-center" style="width: 1.5rem;" />
-                    <span>+</span>
-                </div>
-            </div>
-        </div>
+        <?php else : ?>
 
+            <h3 class="text-center">Product not found</h3>
+
+
+        <?php endif; ?>
+        <!--Grid row-->
     </div>
-</section>
+</main>
 
 <?php include ROOT_PATH .  DS . 'includes' . DS . 'footer.php'; ?>

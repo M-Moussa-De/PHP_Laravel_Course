@@ -1,16 +1,14 @@
-<?php include './../config.php'; ?>
-
 <!DOCTYPE html>
 
 <head>
 
     <!-- Start Links -->
-    <link rel="stylesheet" href="<?= ROOT_PATH . DS . 'assets' . DS . 'css' . DS . 'font-awesome.css' ?> ">
-    <link rel="stylesheet" href="<?= ROOT_PATH . DS . 'assets' . DS . 'css' . DS . 'bootstrap.min.css' ?> ">
+    <link rel="stylesheet" href="http://localhost:8080/projects/php_laravel_course/exam_one/assets/css/font-awesome.css">
+    <link rel="stylesheet" href="http://localhost:8080/projects/php_laravel_course/exam_one/assets/css/bootstrap.min.css">
 
     <!--Start Home Style -->
-    <link rel="stylesheet" href="<?= ROOT_PATH . DS . 'assets' . DS . 'css' . DS . 'index_style.css' ?> ">
-    <link rel="stylesheet" href="<?= ROOT_PATH . DS . 'assets' . DS . 'css' . DS . 'forms.css' ?> ">
+    <link rel="stylesheet" href="http://localhost:8080/projects/php_laravel_course/exam_one/assets/css/index_style.css">
+    <link rel="stylesheet" href="http://localhost:8080/projects/php_laravel_course/exam_one/assets/css/forms.css">
     <!-- End Home Style -->
 
     <!-- Start Google Fonts -->

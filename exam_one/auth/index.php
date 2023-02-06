@@ -1,58 +1,19 @@
-<?php session_start(); ?>
 <?php include './../config.php'; ?>
-<?php include ROOT_PATH .  DS . 'includes' . DS . 'header.php'; ?>
-<?php include ROOT_PATH .  DS . 'includes' . DS . 'navbar.php'; ?>
+<?php include './../includes/header.php'; ?>
+<?php include './../includes/navbar.php'; ?>
+<?php include './../functions/processLogin.php'  ?>
 
 <?php
 
-if (isset($_SESSION['username'])) {
-  header('Location:' . ROOT_PATH);
-  exit;
-}
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // require_once ROOT_PATH .  DS . 'functions' . DS . 'processLogin.php';
 
-  // Clear the signedup key from the url
-  // in order to remove the success alert
-  if (isset($_GET["signedup"])) {
-    unset($_GET["signedup"]);
-  }
-  $url = basename($_SERVER['PHP_SELF']);
-  $query = http_build_query($_GET);
-  if (!empty($query)) {
-    $url .= "?" . $query;
-  }
-  header("Location: " . ROOT_PATH . DS . 'auth');
-
-  $data = [
-    'email' => htmlspecialchars(trim($_POST['email'])) ?? '',
-    'password' => trim($_POST['password']) ?? ''
-  ];
-
-  if (file_exists('./../database/users.json')) {
-    $json = json_decode(file_get_contents('./../database/users.json'), true);
-  } else {
-    $json = ['users' => []];
-  }
-
-  // Check if user exists
-  foreach ($json['users'] as $user) {
-    if ((isset($user['username']) && $user['username'] === $data['email']) ||
-      (isset($user['email']) && $user['email'] === $data['email'])
-    ) {
-      if (password_verify($data['password'], $user['password'])) {
-
-
-        $_SESSION['username'] = $user['username'];
-        session_regenerate_id();
-
-        header('Location:' . ROOT_PATH);
-        exit;
-      }
-    }
+  if (processLogin()) {
+    session_regenerate_id();
+    header('Location:' . ROOT_PATH . ($user['type'] === 0 ? DS . 'admin' : ''));
+    exit;
   }
 }
-
 ?>
 
 <div class="card-body px-5 py-5">
@@ -62,6 +23,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php if (isset($_GET['signedup'])) : ?>
       <div class="alert alert-success py-1">
         Signed up successfully. You can login now!
+      </div>
+    <?php endif; ?>
+
+    <?php if (isset($_GET['loggedout'])) : ?>
+      <div class="alert alert-success py-1">
+        Logged out successfully!
       </div>
     <?php endif; ?>
 
@@ -94,4 +61,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 
 
-<?php include ROOT_PATH .  DS . 'includes' . DS . 'footer.php'; ?>
+<?php include './../includes/footer.php'; ?>

@@ -1,14 +1,8 @@
-<?php session_start(); ?>
 <?php include './../config.php'; ?>
 <?php include ROOT_PATH .  DS . 'includes' . DS . 'header.php'; ?>
 <?php include ROOT_PATH .  DS . 'includes' . DS . 'navbar.php'; ?>
 
 <?php
-
-if (isset($_SESSION['username'])) {
-  header('Location:' . ROOT_PATH);
-  exit;
-}
 
 $userExists = false;
 
