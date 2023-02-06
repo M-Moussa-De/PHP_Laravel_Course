@@ -2,6 +2,22 @@
 <?php include './../includes/header.php'; ?>
 <?php include './../includes/navbar.php'; ?>
 
+<?php
+
+// session_destroy();
+
+// if (isset($_SESSION['cart'])) {
+//     echo '<pre>';
+//     print_r($_SESSION['cart']);
+//     echo '</pre>';
+// }
+
+$total = 0;
+
+?>
+
+
+
 <section id="page-header" class="about-header">
     <h2>#Cart</h2>
     <p>Let's see what you have.</p>
@@ -12,12 +28,12 @@
         <h3 class="text-center">E-Commerce cart</h3>
     </header>
 
-    <table class="table table-dark table-hover">
-        <thead>
+    <table class="table table-hover">
+        <thead class="table-dark">
             <tr class="text-center">
                 <td scope="col">Image</td>
                 <td scope="col">Name</td>
-                <td scope="col">Desc</td>
+                <td scope="col">Stock</td>
                 <td scope="col">Quantity</td>
                 <td scope="col">price</td>
                 <td scope="col">Subtotal</td>
@@ -26,15 +42,12 @@
             </tr>
         </thead>
 
-        <?php if (isset($_SESSION['products'])) : ?>
+        <?php if (isset($_SESSION['cart'])) : ?>
             <tbody>
-                <?php foreach ($_SESSION['products'] as $product) : ?>
+                <?php foreach ($_SESSION['cart'] as $product) : ?>
                     <tr class="text-center" style="line-height: 3;">
                         <td>
-                            <?= $product['id'] ?>
-                        </td>
-                        <td>
-                            <img src="<?= $product['img'] ?>" title="<?= $product['title'] ?>" alt="<?= $product['title'] ?>" width="50" height="50" />
+                            <img src="<?= ROOT_PATH . DS . 'assets' . DS . 'img' . DS . 'products' . DS . $product['src'] ?>" title="<?= $product['title'] ?>" alt="" width="50" height="50" />
                         </td>
                         <td>
                             <?= $product['title'] ?>
@@ -43,14 +56,26 @@
                             <?= $product['quantity'] > 0 ? 'In stock' : 'Out of stock' ?>
                         </td>
                         <td>
-                            <?= $product['quantity'] ?>
+                            <?= $product['ordered'] ?>
                         </td>
                         <td>
                             <?= '$' . $product['price'] ?>
                         </td>
                         <td>
-                            <a href='<?= "delete.php?id=" . $product['id'] ?>'>
-                                <i class="bi bi-trash3 text-danger"></i>
+                            <?= '$' . $product['price'] * $product['ordered'] ?>
+                            <?php $total +=  $product['price'] * $product['ordered']  ?>
+                        </td>
+                        <td>
+                            <form action="delete_item.php" method="POST">
+                                <input type="hidden" name="item_id" value="<?php echo $product['id']; ?>">
+                                <button type="submit" class="btn bg-transparent btn-danger border-0">
+                                    <i class="text-danger fa fa-trash"></i>
+                                </button>
+                            </form>
+                        </td>
+                        <td>
+                            <a href="<?= ROOT_PATH . DS . 'pages' . DS . 'edit.php?id=' . $product['id'] ?>">
+                                <i class="text-dark fa fa-pen"></i>
                             </a>
                         </td>
                     </tr>
@@ -59,6 +84,16 @@
         <?php endif; ?>
 
     </table>
+    <div class="px-5 pt-2 d-flex justify-content-end">
+        <div>
+            <h4>Total: <span style=" color: #088178; font-weight: 700;"><?= '$ ' . number_format($total, 2); ?></span></h4>
+
+            <!-- Checkout -->
+            <div class="my-3">
+                <a class="btn btn-success w-100" href="checkout.php">Checkout</a>
+            </div>
+        </div>
+    </div>
 </section>
 
 <?php include ROOT_PATH .  DS . 'includes' . DS . 'footer.php'; ?>

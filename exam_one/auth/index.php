@@ -5,14 +5,10 @@
 
 <?php
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  // require_once ROOT_PATH .  DS . 'functions' . DS . 'processLogin.php';
-
-  if (processLogin()) {
-    session_regenerate_id();
-    header('Location:' . ROOT_PATH . ($user['type'] === 0 ? DS . 'admin' : ''));
-    exit;
-  }
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && processLogin()) {
+  session_regenerate_id();
+  header('Location:' . ROOT_PATH . ($user['type'] === 0 ? DS . 'admin' : ''));
+  exit;
 }
 ?>
 
@@ -29,6 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php if (isset($_GET['loggedout'])) : ?>
       <div class="alert alert-success py-1">
         Logged out successfully!
+      </div>
+    <?php endif; ?>
+
+    <?php if (isset($_GET['loggin_required'])) : ?>
+      <div class="alert alert-success py-1">
+        Login first to complete checking out
       </div>
     <?php endif; ?>
 

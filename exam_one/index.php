@@ -46,7 +46,7 @@ foreach ($newArrival_json['products']['newArrival'] as $feature) {
 <!-- End Feature-->
 
 <!-- Start New Arrival or productCard Features -->
-<section id="product1" class="section-p1">
+<section id="product1" class="section-p1 position-relative">
     <h2>Featured Products</h2>
     <p>Summer Collection New Modren Desgin</p>
     <div class="pro-container">
@@ -66,13 +66,10 @@ foreach ($newArrival_json['products']['newArrival'] as $feature) {
                             <i class="fas fa-star"></i>
                         <?php endfor; ?>
                     </div>
-                    <h4 class="my-2">
+                    <h4 class="position-absolute top-0 mt-3 mx-2">
                         $ <?= $featuredProduct['price'] ?>
                     </h4>
-                    <div>
-                        <a href="<?= ROOT_PATH . DS . 'pages' . DS . 'cart.php?id=' . $featuredProduct['id'] ?>" class="cart">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
+                    <div class="d-flex justify-content-center mt-3">
                         <a class="btn btn-outline-success btn-sm px-5" href="<?= ROOT_PATH . DS . 'pages' . DS . 'product.php?id=' . $featuredProduct['id'] ?>" class="cart">
                             View
                         </a>

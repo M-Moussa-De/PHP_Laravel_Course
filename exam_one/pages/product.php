@@ -4,12 +4,13 @@
 
 <?php
 
-if (!isset($_GET['id'])) {
-    header('Location:' . ROOT_PATH);
-    exit;
-}
+// if (!isset($_GET['id'])) {
+//     header('Location:' . ROOT_PATH);
+//     exit;
+// }
 
-
+// Show product
+$cart = [];
 $pro = [];
 $products_json = json_decode(file_get_contents('./../database/products.json'), true);
 foreach ($products_json['products']['featuredProducts'] as $product) {
@@ -20,6 +21,29 @@ foreach ($products_json['products']['featuredProducts'] as $product) {
     }
 }
 
+// Add product to cart
+if (isset($_POST['products_sum'])) {
+    $products_sum = $_POST['products_sum'] ?? 1;
+
+    if (!isset($_SESSION['cart'])) {
+        $_SESSION['cart'] = array();
+    }
+
+    $pro["ordered"] = $products_sum;
+
+    $item = $pro;
+
+    array_push($_SESSION['cart'], $item);
+
+    header('Location: ' . ROOT_PATH . DS . 'pages' . DS . 'cart.php?added=true');
+    exit;
+}
+
+// Remove from cart
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['remove'])) {
+    }
+}
 
 ?>
 
@@ -67,12 +91,12 @@ foreach ($products_json['products']['featuredProducts'] as $product) {
 
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero eos atque quia ipsa sint voluptatibus! Beatae sit assumenda asperiores iure at maxime atque repellendus maiores quia sapiente.</p>
 
-                        <form class="d-flex justify-content-left">
+                        <form class="d-flex justify-content-left" method="POST">
                             <!-- Default input -->
                             <div class="form-outline me-1" style="width: 100px;">
-                                <input type="number" min="1" value="1" class="form-control" />
+                                <input type="number" min="1" name="products_sum" value="1" class="form-control" />
                             </div>
-                            <button class="btn btn-success ms-1" type="submit">
+                            <button class="btn btn-success ms-1" type="submit" name="addToCart">
                                 Add to cart
                                 <i class="fas fa-shopping-cart ms-1"></i>
                             </button>

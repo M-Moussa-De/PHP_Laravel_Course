@@ -85,8 +85,6 @@
                 </div>
 </section>
 
-
-
 <section id="pagenation" class="section-p1">
     <nav aria-label="Page navigation example">
         <ul class="pagination">
