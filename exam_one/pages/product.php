@@ -92,7 +92,7 @@ if (isset($_POST['products_sum'])) {
                         <form class="d-flex justify-content-left" method="POST">
                             <!-- Default input -->
                             <div class="form-outline me-1" style="width: 100px;">
-                                <input type="text" inputmode="numeric" pattern="[1-9]*" min="1" max="<?= $pro['quantity'] ?>" name="products_sum" value="1" class="form-control" />
+                                <input type="number" pattern="[1-9]*" min="1" max="<?= $pro['quantity'] ?>" name="products_sum" value="1" class="form-control" />
                             </div>
                             <button class="btn btn-success ms-1" type="submit" name="addToCart">
                                 Add to cart

@@ -24,7 +24,6 @@
                 <td scope="col">price</td>
                 <td scope="col">Subtotal</td>
                 <td scope="col">Remove</td>
-                <td scope="col">Edit</td>
             </tr>
         </thead>
 
@@ -58,11 +57,6 @@
                                     <i class="text-danger fa fa-trash"></i>
                                 </button>
                             </form>
-                        </td>
-                        <td>
-                            <a href="<?= ROOT_PATH . DS . 'pages' . DS . 'edit.php?id=' . $product['id'] ?>">
-                                <i class="text-dark fa fa-pen"></i>
-                            </a>
                         </td>
                     </tr>
                 <?php endforeach ?>
