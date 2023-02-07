@@ -7,6 +7,12 @@
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && processLogin()) {
   session_regenerate_id();
+
+  if (!empty($_GET['loggin_required'])) {
+    header('Location:' . ROOT_PATH . 'pages');
+    exit;
+  }
+
   header('Location:' . ROOT_PATH . ($user['type'] === 0 ? DS . 'admin' : ''));
   exit;
 }

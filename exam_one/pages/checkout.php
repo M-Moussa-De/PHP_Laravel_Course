@@ -1,11 +1,11 @@
 <?php include './../config.php'; ?>
-<?php include './../includes/header.php'; ?>
-<?php include './../includes/navbar.php'; ?>
+<?php include ROOT_PATH . DS . 'includes' . DS . 'header.php'; ?>
+<?php include ROOT_PATH . DS . 'includes' . DS . 'navbar.php'; ?>
 
 <?php
 
 if (!isset($_SESSION['username'])) {
-  header('Location: http://localhost:8080/projects/php_laravel_course/exam_one/auth?loggin_required=true');
+  header('Location: ' .  ROOT_PATH . DS . 'auth?loggin_required=true');
   exit;
 }
 
@@ -31,4 +31,4 @@ for ($i = 0; $i < 10; $i++) {
 
 
 
-<?php include './../includes/header.php'; ?>
+<?php include ROOT_PATH . DS . 'includes' . DS . 'footer.php'; ?>

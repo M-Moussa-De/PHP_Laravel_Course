@@ -1,6 +1,6 @@
 <?php include './../config.php'; ?>
-<?php include './../includes/header.php'; ?>
-<?php include './../includes/navbar.php'; ?>
+<?php include ROOT_PATH . DS . 'includes' . DS . 'header.php'; ?>
+<?php include ROOT_PATH . DS . 'includes' . DS . 'navbar.php'; ?>
 
 <?php $total = 0; ?>
 
@@ -53,7 +53,7 @@
                         </td>
                         <td>
                             <form action="delete_item.php" method="POST">
-                                <input type="hidden" name="item_id" value="<?php echo $product['id']; ?>">
+                                <input type="hidden" name="item_id" value="<?= $product['id']; ?>">
                                 <button type="submit" class="btn bg-transparent btn-danger border-0">
                                     <i class="text-danger fa fa-trash"></i>
                                 </button>

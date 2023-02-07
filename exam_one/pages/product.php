@@ -1,13 +1,16 @@
 <?php include './../config.php'; ?>
-<?php include './../includes/header.php'; ?>
-<?php include './../includes/navbar.php'; ?>
+<?php include ROOT_PATH . DS . 'includes' . DS . 'header.php'; ?>
+<?php include ROOT_PATH . DS . 'includes' . DS . 'navbar.php'; ?>
 
 <?php
 
-// if (!isset($_GET['id'])) {
-//     header('Location:' . ROOT_PATH);
-//     exit;
-// }
+if (empty($_GET['id'])) {
+    header('Location:' . ROOT_PATH);
+    exit;
+}
+?>
+
+<?php
 
 // Show product
 $cart = [];
@@ -23,10 +26,11 @@ foreach ($products_json['products']['featuredProducts'] as $product) {
 
 // Add product to cart
 if (isset($_POST['products_sum'])) {
+
     $products_sum = $_POST['products_sum'] ?? 1;
 
     if (!isset($_SESSION['cart'])) {
-        $_SESSION['cart'] = array();
+        $_SESSION['cart'] = [];
     }
 
     $pro["ordered"] = $products_sum;
@@ -35,14 +39,8 @@ if (isset($_POST['products_sum'])) {
 
     array_push($_SESSION['cart'], $item);
 
-    header('Location: ' . ROOT_PATH . DS . 'pages' . DS . 'cart.php?added=true');
+    header('Location: ' . ROOT_PATH . DS . 'pages' . DS . '?added=true');
     exit;
-}
-
-// Remove from cart
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['remove'])) {
-    }
 }
 
 ?>
@@ -94,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <form class="d-flex justify-content-left" method="POST">
                             <!-- Default input -->
                             <div class="form-outline me-1" style="width: 100px;">
-                                <input type="number" min="1" name="products_sum" value="1" class="form-control" />
+                                <input type="text" inputmode="numeric" pattern="[1-9]*" min="1" max="<?= $pro['quantity'] ?>" name="products_sum" value="1" class="form-control" />
                             </div>
                             <button class="btn btn-success ms-1" type="submit" name="addToCart">
                                 Add to cart

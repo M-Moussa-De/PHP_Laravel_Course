@@ -47,7 +47,7 @@
                     <?php endif; ?>
 
                     <li class="nav-item mt-3 mt-md-0">
-                        <a id="lg-cart" href="<?= ROOT_PATH . DS . 'pages' . DS . 'cart.php'; ?>">
+                        <a id="lg-cart" href="<?= ROOT_PATH . DS . 'pages'; ?>">
                             <i class="fas fa-shopping-cart"></i>
                         </a>
                     </li>

@@ -1,7 +1,6 @@
-<?php
-// include "header.php";
-// include "navbar.php";
-?>
+<?php include './../config.php'; ?>
+<?php include ROOT_PATH . DS . 'includes' . DS . 'header.php'; ?>
+<?php include ROOT_PATH . DS . 'includes' . DS . 'navbar.php'; ?>
 
 <div class="container-scroller">
   <div class="container-fluid page-body-wrapper full-page-wrapper">

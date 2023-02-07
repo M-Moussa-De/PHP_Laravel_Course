@@ -1,8 +1,6 @@
-<?php
-// include "header.php";
-// include "navbar.php";
-
-?>
+<?php include './../config.php'; ?>
+<?php include ROOT_PATH . DS . 'includes' . DS . 'header.php'; ?>
+<?php include ROOT_PATH . DS . 'includes' . DS . 'navbar.php'; ?>
 
 
 <section id="cart-add" class="section-p1">
