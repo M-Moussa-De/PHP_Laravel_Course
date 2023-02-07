@@ -1,6 +1,6 @@
 <?php include './config.php'; ?>
-<?php include './includes/header.php'; ?>
-<?php include './includes/navbar.php'; ?>
+<?php include ROOT_PATH . DS . 'includes' . DS . 'header.php'; ?>
+<?php include ROOT_PATH . DS . 'includes' . DS . 'navbar.php'; ?>
 
 <?php
 

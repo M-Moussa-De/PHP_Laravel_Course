@@ -2,21 +2,7 @@
 <?php include './../includes/header.php'; ?>
 <?php include './../includes/navbar.php'; ?>
 
-<?php
-
-// session_destroy();
-
-// if (isset($_SESSION['cart'])) {
-//     echo '<pre>';
-//     print_r($_SESSION['cart']);
-//     echo '</pre>';
-// }
-
-$total = 0;
-
-?>
-
-
+<?php $total = 0; ?>
 
 <section id="page-header" class="about-header">
     <h2>#Cart</h2>
@@ -25,7 +11,7 @@ $total = 0;
 
 <section id="cart" class="section-p1 mb-5">
     <header class="py-3 cart-header">
-        <h3 class="text-center">E-Commerce cart</h3>
+        <h3 class="text-center">Your cart</h3>
     </header>
 
     <table class="table table-hover">
@@ -84,16 +70,27 @@ $total = 0;
         <?php endif; ?>
 
     </table>
-    <div class="px-5 pt-2 d-flex justify-content-end">
-        <div>
-            <h4>Total: <span style=" color: #088178; font-weight: 700;"><?= '$ ' . number_format($total, 2); ?></span></h4>
+    <?php if ($total) : ?>
+        <div class="px-5 pt-2 d-flex justify-content-end">
+            <div>
+                <h4>Total: <span style=" color: #088178; font-weight: 700;"><?= '$ ' . number_format($total, 2); ?></span></h4>
 
-            <!-- Checkout -->
-            <div class="my-3">
-                <a class="btn btn-success w-100" href="checkout.php">Checkout</a>
+                <!-- Checkout -->
+                <div class="my-3">
+                    <a class="btn btn-success w-100" href="checkout.php">Checkout</a>
+                </div>
             </div>
         </div>
-    </div>
+    <?php else : ?>
+        <div class="my-4">
+            <center class="text-muted">
+                <h5>Your cart is currently empty</h5>
+                <a href="<?= ROOT_PATH ?>" class="text-success">
+                    Add products
+                </a>
+            </center>
+        </div>
+    <?php endif; ?>
 </section>
 
 <?php include ROOT_PATH .  DS . 'includes' . DS . 'footer.php'; ?>
