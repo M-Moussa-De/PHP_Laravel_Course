@@ -122,7 +122,7 @@ LINES TERMINATED BY '\r\n' -- or '\n'
 -- Connect to user called your name
 mysql -umahmoud -p
 -- Insert row into course_details
-INSERT INTO IF EXISTS course_details (course_name)
+INSERT INTO course_details (course_name)
 VALUES ('Machine learning');
 -- I want you to open a new session to see this row??
 SELECT * FROM course_details ORDER BY id DESC LIMIT 1;
