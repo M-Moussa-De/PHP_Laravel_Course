@@ -101,10 +101,8 @@ CREATE TABLE IF NOT EXISTS course_archive (
 CREATE TRIGGER course_details_before_delete
 BEFORE DELETE ON course_details
 FOR EACH ROW
-BEGIN
-    INSERT INTO course_archive
-    VALUES(OLD.id, OLD.course_name, OLD.price, NOW());
-END;
+INSERT INTO course_archive
+VALUES(OLD.id, OLD.course_name, OLD.price, OLD.created_at);
 -- So delete courses(php-laravel and Nodejs)
 DELETE FROM course_details WHERE course_name IN ('php-laravel', 'Nodejs')
 -- Restore all rows from course_archive to course_details
