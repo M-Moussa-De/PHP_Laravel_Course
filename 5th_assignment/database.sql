@@ -219,6 +219,8 @@ USE C39_copy;
 mysql -umahmoud -p c39_copy < /path/to/C39_schema.sql
 SHOW TABLES;
 
+-- Show current logged in user
+SELECT USER(),CURRENT_USER();
 
 
 
