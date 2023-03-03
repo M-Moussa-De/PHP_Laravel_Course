@@ -127,7 +127,7 @@ VALUES ('Machine learning');
 -- I want you to open a new session to see this row??
 SELECT * FROM course_details ORDER BY id DESC LIMIT 1;
 -- Option 2 
-SELECT * FROM my_table WHERE id = LAST_INSERT_ID();
+SELECT * FROM course_details WHERE id = LAST_INSERT_ID();
 
 -- lock account bad_boy 
 UPDATE mysql.user SET account_locked = 'Y' WHERE user = 'bad_boy';
