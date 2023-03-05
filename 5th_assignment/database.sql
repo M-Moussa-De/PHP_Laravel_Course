@@ -69,7 +69,7 @@ VALUES ('Gamal', 7500), ('Gamila', 3587);
 -- Connect by bad_boy 
 mysql -ubad_boy -p
 -- Insert into students tables
-INSERT INTO students (name, birthdate) ------------------------------------------------------------
+INSERT INTO students (name, birthdate)
 VALUES ('Issac', '18-03-1997'), ('Tomas', '28-06-2004');
 
 -- Connect to user called your name
@@ -80,10 +80,10 @@ GRANT INSERT, SELECT ON C39.course_details TO 'bad_boy'@'localhost';
 -- Connect to user bad_boy
 mysql -ubad_boy -p
 -- Insert 3 rows by mistake ??
-INSERT INTO IF EXISTS course_details (course_name)
-VALUES ('Laravel 9'), ('Software engineering', 'APS.Net Core');
+INSERT INTO course_details (course_name)
+VALUES ('Laravel 9'), ('Software engineering'), ('APS.Net Core');
 -- So take insert privilege from bad_boy
-REVOKE INSERT ON C39.course_details FROM bad_boy;
+REVOKE INSERT ON C39.course_details FROM 'bad_boy'@'localhost';
 -- and rollback all rows was inserted
 SAVEPOINT before_bad_boy_inserted_rows; -- This step should stand before the bad boy inserts any data
 ROLLBACK before_bad_boy_inserted_rows;
@@ -98,13 +98,11 @@ CREATE TABLE IF NOT EXISTS course_archive (
  created_at     DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 -- I want when delete row from table course_details take this row and insert him into course_archive??
-CREATE TRIGGER course_details_before_delete
+CREATE TRIGGER course_details_before_delete      -- BTW, Trigger command is denied for this user, root can run it problemless.
 BEFORE DELETE ON course_details
 FOR EACH ROW
-BEGIN
-    INSERT INTO course_archive
-    VALUES(OLD.id, OLD.course_name, OLD.price, NOW());
-END;
+INSERT INTO course_archive
+VALUES(OLD.id, OLD.course_name, OLD.price, OLD.created_at);
 -- So delete courses(php-laravel and Nodejs)
 DELETE FROM course_details WHERE course_name IN ('php-laravel', 'Nodejs')
 -- Restore all rows from course_archive to course_details
@@ -124,15 +122,15 @@ LINES TERMINATED BY '\r\n' -- or '\n'
 -- Connect to user called your name
 mysql -umahmoud -p
 -- Insert row into course_details
-INSERT INTO IF EXISTS course_details (course_name)
+INSERT INTO course_details (course_name)
 VALUES ('Machine learning');
 -- I want you to open a new session to see this row??
 SELECT * FROM course_details ORDER BY id DESC LIMIT 1;
 -- Option 2 
-SELECT * FROM my_table WHERE id = LAST_INSERT_ID();
+SELECT * FROM course_details WHERE id = LAST_INSERT_ID();
 
 -- lock account bad_boy 
-UPDATE mysql.user SET account_locked = 'Y' WHERE user = 'bad_boy';
+ALTER USER 'bad_boy'@'localhost' IDENTIFIED BY 'xxx';  -- BTW, Trigger command is denied for the current user, root can run it problemless.
 
 -- Connect to loki
 mysql -uloki -p
@@ -219,6 +217,8 @@ USE C39_copy;
 mysql -umahmoud -p c39_copy < /path/to/C39_schema.sql
 SHOW TABLES;
 
+-- Show current logged in user
+SELECT USER(),CURRENT_USER();
 
 
 
