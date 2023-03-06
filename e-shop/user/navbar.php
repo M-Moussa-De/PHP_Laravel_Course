@@ -16,6 +16,11 @@ if (isset($_GET['lang'])) {
 
     <div>
         <ul id="navbar">
+            <?php if (isset($_SESSION['admin'])) : ?>
+                <li class="link">
+                    <a href="./../admin/"><?= $data['admin'] ?></a>
+                </li>
+            <?php endif; ?>
             <li class="link">
                 <a href="./"><?= $data['shop'] ?></a>
             </li>

@@ -12,7 +12,7 @@ foreach ($included_files as $file) {
 }
 
 if (!$included) {
-  include './../config.php';
+  include './../../config.php';
 }
 
 

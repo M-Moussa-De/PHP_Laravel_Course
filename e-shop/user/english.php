@@ -1,6 +1,7 @@
 <?php
 
 return $data = [
+    'admin'     => 'admin',
     'shop'     => 'shop',
     'about'    => 'about',
     'contact'  => 'contact',

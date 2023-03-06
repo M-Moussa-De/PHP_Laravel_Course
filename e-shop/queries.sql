@@ -1,6 +1,6 @@
 -- Database Route_Shop 
-CREATE DATABASE IF NOT EXISTS Route_Shop DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE Route_Shop;
+CREATE DATABASE IF NOT EXISTS E_Shop DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE E_Shop;
 SET default_storage_engine = InnoDB;
 
 -- Users

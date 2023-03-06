@@ -2,7 +2,7 @@
 
 $host = 'localhost';
 $user = 'root';
-$db = 'Route_Shop';
+$db = 'E_Shop';
 $password = '';
 
 $conn = new mysqli($host, $user, $password, $db);

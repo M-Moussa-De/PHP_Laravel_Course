@@ -63,7 +63,7 @@ if (!$included) {
                                 <span class="count bg-success"></span>
                             </div>
                             <div class="profile-name">
-                                <h5 class="mb-0 font-weight-normal"><?= 'Admin' ?></h5>
+                                <h5 class="mb-0 font-weight-normal"><?= $_SESSION['name'] ?></h5>
                                 <span>Gold Member</span>
                             </div>
                         </div>
@@ -158,8 +158,13 @@ if (!$included) {
                         </li>
                     </ul>
                     <ul class="navbar-nav navbar-nav-right">
+                        <li class="nav-item nav-settings d-none d-lg-block">
+                            <a class="nav-link" href="<?= ROOT_PATH . '/../user' ?>">
+                                Website
+                            </a>
+                        </li>
                         <li class="nav-item dropdown d-none d-lg-block">
-                            <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-bs-toggle="dropdown" aria-expanded="false" href="#">+ Create New Project</a>
+                            <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-bs-toggle="dropdown" aria-expanded="false" href="#">+ Add New Product</a>
                             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">
                                 <h6 class="p-3 mb-0">Projects</h6>
                                 <div class="dropdown-divider"></div>
@@ -282,7 +287,7 @@ if (!$included) {
                             <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
                                 <div class="navbar-profile">
                                     <img class="img-xs rounded-circle" src="<?= ROOT_PATH . '/assets/images/faces/face7.jpg' ?>" alt="">
-                                    <p class="mb-0 d-none d-sm-block navbar-profile-name"><?= 'Admin' ?></p>
+                                    <p class="mb-0 d-none d-sm-block navbar-profile-name"><?= $_SESSION['name']  ?></p>
                                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                                 </div>
                             </a>

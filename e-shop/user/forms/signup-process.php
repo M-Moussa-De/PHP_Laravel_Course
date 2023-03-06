@@ -26,7 +26,7 @@ if (empty($data['firstname'])) {
 }
 
 // Lastname
-$conn = include './../db.php';
+$conn = include './../../db.php';
 // Check if Lastname is in use
 $lname = $data['lastname'];
 $sql = <<<SQL

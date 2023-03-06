@@ -1,8 +1,8 @@
-<?php include './config.php' ?>
+<?php include './config.php'; ?>
 
 <?php
 
-if (!isset($_SESSION['admin']) || !isset($_SESSION['id'])) {
+if (!isset($_SESSION['admin']) && $_SESSION['admin'] !== 'true') {
 
   header('Location: ./../user');
   exit;
@@ -10,7 +10,7 @@ if (!isset($_SESSION['admin']) || !isset($_SESSION['id'])) {
 
 ?>
 
-<?php include ROOT_PATH . '/shared/header.php' ?>
+<?php include './shared/header.php' ?>
 
 <!-- row -->
 <div class="row">
@@ -24,4 +24,4 @@ if (!isset($_SESSION['admin']) || !isset($_SESSION['id'])) {
 </div>
 <!-- /. row -->
 
-<?php include ROOT_PATH . '/shared/footer.php'; ?>
+<?php include './shared/footer.php'; ?>

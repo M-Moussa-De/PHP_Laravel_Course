@@ -34,9 +34,13 @@ $sql = <<<SQL
     LIMIT 1
 SQL;
 
-$conn = include './../db.php';
+$conn = include './../../db.php';
 
 $user = $conn->query($sql)->fetch_assoc();
+
+echo '<pre>';
+var_dump($user);
+echo '</pre>';
 
 if ($user) {
     if (password_verify($data['password'], $user['password'])) {
@@ -57,11 +61,10 @@ if ($user) {
             exit;
         }
     }
-} else {
-
-    $_SESSION['login_error'] = 'Invalid login';
-    $_SESSION['email'] = $data['email'];
-
-    header('Location: ./../login.php');
-    exit;
 }
+
+$_SESSION['login_error'] = 'Invalid login';
+$_SESSION['email'] = $data['email'];
+
+header('Location: ./../login.php');
+exit;

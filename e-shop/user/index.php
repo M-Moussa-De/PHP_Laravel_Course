@@ -2,7 +2,7 @@
 <?php if (!isset($_SESSION['cart'])) $_SESSION['cart'] = []; ?>
 <!-- Retrieve data -->
 <?php
-$conn = include 'db.php';
+$conn = include './../db.php';
 
 $sql = <<<SQL
     SELECT *
@@ -18,6 +18,7 @@ if ($res->num_rows > 0) {
         $products[] = $row;
     }
 }
+
 ?>
 
 <!-- Add to cart -->
@@ -88,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php foreach ($products as $product) : ?>
             <?php if ($product['type'] == 'product') : ?>
                 <div class="pro">
-                    <img src='<?= "img/" . $product['img'] ?>' alt='<?= "p" . $product['i'] ?>' />
+                    <img src='<?= "img/" . $product['img'] ?>' alt='<?= $product['name'] ?>' />
                     <div class="des">
                         <span><?= $product['brand'] ?></span>
                         <h5><?= $product['name'] ?></h5>

@@ -24,7 +24,7 @@ if (!empty($_SESSION['cart'])) {
            WHERE id = $id
        SQL;
 
-        $conn = include 'db.php';
+        $conn = include './../db.php';
         $result = $conn->query($sql)->fetch_assoc();
         $result['quantity'] = $product['quantity'];
 

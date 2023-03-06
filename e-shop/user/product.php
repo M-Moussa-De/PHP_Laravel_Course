@@ -10,7 +10,7 @@ if (!isset($_GET['id'])) {
 
 <!-- Retrieve data -->
 <?php
-$conn = include 'db.php';
+$conn = include './../db.php';
 $product_id = $_GET['id'];
 $sql = <<<SQL
     SELECT *
