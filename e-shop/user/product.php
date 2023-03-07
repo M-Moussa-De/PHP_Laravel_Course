@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
                         <div class="d-flex justify-content-between align-items-center">
                             <input type="number" name="quantity" value="1" min="1" class="w-25 text-center">
-                            <button role="button" type="submit" name="add_to_cart" class="btn btn-success">
+                            <button role="button" type="submit" name="add_to_cart" class="btn btn-success <?= $_SESSION['admin'] == true ? 'disabled' : '' ?> ">
                                 Add to cart
                             </button>
                         </div>

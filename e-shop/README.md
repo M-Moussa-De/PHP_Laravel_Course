@@ -5,9 +5,10 @@ This is an e-shop for selling products.
 ## Features
 
 - Signup and signin system (signup, signin, remember me, forgot password, login using Facebook or Gmail)
-- Rols and permission (User and admin)
 - Admin dashboard (CRUD)
+- Rols and permission (User and admin)
 - Cart
+- Pagination system
 - Change language
 
 ## Main used technologies and tools

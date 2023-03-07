@@ -17,6 +17,19 @@ if (!$included) {
 
 ?>
 
+<!-- Logout -->
+<?php
+
+if (isset($_POST['logout'])) {
+
+    session_destroy();
+
+    header('Location: ./../../user/login.php');
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -129,8 +142,8 @@ if (!$included) {
                     </a>
                     <div class="collapse" id="products">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="<?= ROOT_PATH . '/pages/products/new.php' ?>">New</a></li>
                             <li class="nav-item"> <a class="nav-link" href="<?= ROOT_PATH . '/pages/products' ?>">All products</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="<?= ROOT_PATH . '/pages/products/new.php' ?>">New</a></li>
                         </ul>
                     </div>
                 </li>
@@ -312,7 +325,10 @@ if (!$included) {
                                         </div>
                                     </div>
                                     <div class="preview-item-content">
-                                        <p class="preview-subject mb-1">Log out</p>
+                                        <form method="POST">
+                                            <p class="preview-subject mb-1"></p>
+                                            <input type="submit" name="logout" class="bg-transparent text-white" value="Log out" />
+                                        </form>
                                     </div>
                                 </a>
                             </div>

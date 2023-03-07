@@ -1,4 +1,10 @@
 <?php
+
+if (!isset($_GET['id'])) {
+    header('Location: ./');
+    exit;
+}
+
 $included_files = get_included_files();
 $included = false;
 
@@ -22,17 +28,6 @@ if (!isset($_SESSION['admin']) && $_SESSION['admin'] !== 'true') {
 
     header('Location: ./../../../user');
     exit;
-}
-
-?>
-
-<?php
-
-if (isset($_SESSION['data'])) {
-
-    $data = $_SESSION['data'];
-
-    unset($_SESSION['data']);
 }
 
 ?>
@@ -65,6 +60,22 @@ if ($result->num_rows > 0) {
     $products = $result->fetch_all(MYSQLI_ASSOC);
 }
 
+// Retrieve a product
+$id = (int)$_GET['id'];
+$sql = <<<SQL
+  SELECT *
+  FROM products
+  WHERE id = $id
+  LIMIT 1
+SQL;
+
+$product = $conn->query($sql)->fetch_assoc();
+$found = false;
+
+if ($product) {
+
+    $found = true;
+}
 ?>
 
 <?php include "./../../shared/header.php"; ?>
@@ -78,15 +89,15 @@ if ($result->num_rows > 0) {
             <div class="card-body">
                 <?php if (isset($_SESSION['product-added'])) : ?>
                     <div class="alert alert-success py-1">
-                        Product added successfully
+                        Product updated successfully
                         <?php unset($_SESSION['product-added']) ?>
                     </div>
                 <?php endif; ?>
-                <h4 class="card-title text-center">Add product</h4>
-                <form action="<?= ROOT_PATH . '/pages/products/process-forms/add-process.php' ?>" id="addProduct" method="POST" class="forms-sample" enctype="multipart/form-data">
+                <h4 class="card-title text-center">Edit product</h4>
+                <form action="<?= ROOT_PATH . '/pages/products/process-forms/edit-process.php' ?>" id="addProduct" method="POST" class="forms-sample" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="product_name">Product name</label>
-                        <input type="text" class="form-control" name="name" id="product_name" value="<?= $data['name'] ?? '' ?>" placeholder="Product name">
+                        <input type="text" class="form-control" name="name" id="product_name" value="<?= $product['name'] ?? '' ?>" placeholder="Product name">
                         <?php if (isset($_SESSION['add-errors']['name'])) : ?>
                             <small class="text-danger">
                                 <?= $_SESSION['add-errors']['name'] ?>
@@ -95,7 +106,7 @@ if ($result->num_rows > 0) {
                     </div>
                     <div class="form-group">
                         <label for="product_brand">Product brand</label>
-                        <input type="text" class="form-control" name="brand" id="product_brand" value="<?= $data['brand'] ?? '' ?>" placeholder="Product brand">
+                        <input type="text" class="form-control" name="brand" id="product_brand" value="<?= $product['brand'] ?? '' ?>" placeholder="Product brand">
                         <?php if (isset($_SESSION['add-errors']['brand'])) : ?>
                             <small class="text-danger">
                                 <?= $_SESSION['add-errors']['brand'] ?>
@@ -108,12 +119,14 @@ if ($result->num_rows > 0) {
                             <option disabled selected>Choose a category</option>
                             <?php if (isset($cat)) : ?>
                                 <?php foreach ($cat as $c) : ?>
-                                    <option value="<?= $c['id'] ?>"><?= strtoupper($c['name'][0]) . substr($c['name'], 1) ?></option>
+                                    <option value="<?= $c['id'] ?>" <?= ($c['id'] == $product['cat_id']) ? 'selected' : '' ?>>
+                                        <?= strtoupper($c['name'][0]) . substr($c['name'], 1) ?>
+                                    </option>
                                 <?php endforeach ?>
                             <?php endif; ?>
                         </select>
                         <?php if (isset($_SESSION['add-errors']['category'])) : ?>
-                            <small class="text-danger">
+                            <small class=" text-danger">
                                 <?= $_SESSION['add-errors']['category'] ?>
                             </small>
                         <?php endif; ?>
@@ -122,11 +135,11 @@ if ($result->num_rows > 0) {
                         <label for="type">Type</label>
                         <select class="form-select" id="type" name="type">
                             <option disabled selected>Choose a type</option>
-                            <?php if (isset($products)) : ?>
-                                <?php foreach ($products as $idx => $product) : ?>
-                                    <option value="<?= ++$idx ?>"><?= strtoupper($product['type'][0]) . substr($product['type'], 1) ?></option>
-                                <?php endforeach ?>
-                            <?php endif; ?>
+                            <?php foreach ($products as $idx => $product) : ?>
+                                <option value="<?= ++$idx ?>" <?= ($product['id'] == $product['cat_id']) ? 'selected' : '' ?>>
+                                    <?= strtoupper($product['type'][0]) . substr($product['type'], 1) ?>
+                                </option>
+                            <?php endforeach ?>
                         </select>
                         <?php if (isset($_SESSION['add-errors']['type'])) : ?>
                             <small class="text-danger">
@@ -145,14 +158,14 @@ if ($result->num_rows > 0) {
                     </div>
                     <div class="form-group">
                         <label for="price">Price</label>
-                        <input type="text" class="form-control" name="price" id="price" value="<?= $data['price'] ?? '' ?>" placeholder="product price">
+                        <input type="text" class="form-control" name="price" id="price" value="<?= $product['price'] ?? '' ?>" placeholder="product price">
                         <?php if (isset($_SESSION['add-errors']['price'])) : ?>
                             <small class="text-danger">
                                 <?= $_SESSION['add-errors']['price'] ?>
                             </small>
                         <?php endif; ?>
                     </div>
-                    <button type="submit" name="add-btn" class="btn btn-primary me-2">Add</button>
+                    <button type="submit" name="add-btn" class="btn btn-primary me-2">Update</button>
                     <a href="<?= ROOT_PATH . '/pages/products' ?>" class="btn btn-dark">Cancel</a>
                 </form>
             </div>

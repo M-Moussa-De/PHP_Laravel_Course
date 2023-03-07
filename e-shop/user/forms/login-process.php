@@ -38,10 +38,6 @@ $conn = include './../../db.php';
 
 $user = $conn->query($sql)->fetch_assoc();
 
-echo '<pre>';
-var_dump($user);
-echo '</pre>';
-
 if ($user) {
     if (password_verify($data['password'], $user['password'])) {
 
