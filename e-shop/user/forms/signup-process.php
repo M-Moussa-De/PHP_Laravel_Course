@@ -36,7 +36,7 @@ $sql = <<<SQL
 SQL;
 $result = $conn->query($sql);
 
-if (empty($data['firstname'])) {
+if (empty($data['lastname'])) {
     $errors['lastname'] = 'Lastname is required';
 } else if (strlen($data['lastname']) < 3) {
     $errors['lastname'] = 'Lastname must be 3 charachters length at least';
@@ -70,11 +70,13 @@ if (empty($data['password'])) {
 }
 
 // Phone
-if ($data['phone']) {
-    if (!preg_match('\^[0-9]{11-15}\$', $data['phone'])) {
-        $errors['phone'] = 'Phone must contain only digites and should be between 11 and 15 digites length';
-    }
-}
+// if ($data['phone']) {
+//     var_dump(preg_match('\^[0-9]{11-15}\$', $data['phone']));
+//     die;
+//     if (!preg_match('\^[0-9]{11-15}\$', $data['phone'])) {
+//         $errors['phone'] = 'Phone must contain only digites and should be between 11 and 15 digites length';
+//     }
+// }
 
 // After Validation
 if (!empty($errors)) {

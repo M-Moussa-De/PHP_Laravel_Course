@@ -108,21 +108,7 @@ if ($res->num_rows > 0) {
                       <td><?= $product['updated_at'] ?></td>
                       <?php if ($product) : ?>
                         <td>
-                          <div class="dropdown">
-                            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="product-<?= $product['id'] ?>" data-bs-toggle="dropdown" aria-expanded="false">
-                              Actions
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="product-<?= $product['id'] ?>">
-                              <style>
-                                ul.dropdown-menu li:hover a {
-                                  color: #fff !important;
-                                }
-                              </style>
-                              <li><a class="dropdown-item" href="<?= './edit.php/?id=' . $product['id'] ?>">Edit</a></li>
-                              <li><a class="dropdown-item" href="<?= './delete.php/?id=' . $product['id'] ?>">Delete</a></li>
-                              <li><a class="dropdown-item" href="<?= './show.php/?id=' . $product['id'] ?>">View</a></li>
-                            </ul>
-                          </div>
+                          <a class="btn btn-outline-primary" href="<?= './show.php/?id=' . $product['id'] ?>">View</a>
                         </td>
                       <?php endif ?>
                     </tr>
@@ -184,27 +170,6 @@ if ($res->num_rows > 0) {
           </div>
         </div>
         <!-- ./ Pagination -->
-
-        <div class="row">
-          <div class="col-md-4 col-sm-6 grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-                <h4 class="card-title">Bordered Rounded</h4>
-                <p class="card-description">Add calss <code>.rounded</code></p>
-                <nav>
-                  <ul class="pagination rounded">
-                    <li class="page-item"><a class="page-link" href="#"><i class="mdi mdi-chevron-left"></i></a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#"><i class="mdi mdi-chevron-right"></i></a></li>
-                  </ul>
-                </nav>
-              </div>
-            </div>
-          </div>
-        </div>
 
       </div>
     </div>

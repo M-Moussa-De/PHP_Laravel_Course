@@ -10,6 +10,7 @@ This is an e-shop for selling products.
 - Cart
 - Pagination system
 - Change language
+- Contact us
 
 ## Main used technologies and tools
 

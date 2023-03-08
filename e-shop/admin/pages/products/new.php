@@ -76,14 +76,8 @@ if ($result->num_rows > 0) {
 
         <div class="card">
             <div class="card-body">
-                <?php if (isset($_SESSION['product-added'])) : ?>
-                    <div class="alert alert-success py-1">
-                        Product added successfully
-                        <?php unset($_SESSION['product-added']) ?>
-                    </div>
-                <?php endif; ?>
                 <h4 class="card-title text-center">Add product</h4>
-                <form action="<?= ROOT_PATH . '/pages/products/process-forms/add-process.php' ?>" id="addProduct" method="POST" class="forms-sample" enctype="multipart/form-data">
+                <form action="<?= ROOT_PATH . '/pages/products/process-forms/new-process.php' ?>" id="addProduct" method="POST" class="forms-sample" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="product_name">Product name</label>
                         <input type="text" class="form-control" name="name" id="product_name" value="<?= $data['name'] ?? '' ?>" placeholder="Product name">

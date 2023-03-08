@@ -94,6 +94,7 @@ if ($product) {
                     </div>
                 <?php endif; ?>
                 <h4 class="card-title text-center">Edit product</h4>
+                <!-- Update product -->
                 <form action="<?= ROOT_PATH . '/pages/products/process-forms/edit-process.php' ?>" id="addProduct" method="POST" class="forms-sample" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="product_name">Product name</label>
@@ -166,8 +167,9 @@ if ($product) {
                         <?php endif; ?>
                     </div>
                     <button type="submit" name="add-btn" class="btn btn-primary me-2">Update</button>
-                    <a href="<?= ROOT_PATH . '/pages/products' ?>" class="btn btn-dark">Cancel</a>
+                    <a href="<?= ROOT_PATH . '/pages/products/show.php/?id=' . $product['id'] ?>" class="btn btn-light">Cancel</a>
                 </form>
+                <!-- /. Update product -->
             </div>
         </div>
 

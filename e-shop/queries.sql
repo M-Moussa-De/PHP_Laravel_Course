@@ -12,6 +12,8 @@ CREATE TABLE IF NOT EXISTS users (
  password       VARCHAR (255) NOT NULL,
  phone          VARCHAR (25),
  address        VARCHAR (100),
+ img            VARCHAR (100),
+ bio            TEXT,
  is_active      BOOLEAN DEFAULT true,
  type           TINYINT DEFAULT 0, 
  created_at     DATETIME DEFAULT CURRENT_TIMESTAMP,

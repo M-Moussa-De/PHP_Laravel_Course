@@ -1,6 +1,32 @@
 <?php
+$included_files = get_included_files();
+$included = false;
 
-session_start();
+foreach ($included_files as $file) {
+    $file_name = basename($file);
+    if ($file_name == 'config.php') {
+        $included = true;
+        break;
+    }
+}
+
+if (!$included) {
+    include './../../../config.php';
+}
+
+?>
+
+<?php
+
+if (!isset($_SESSION['admin']) && $_SESSION['admin'] !== 'true') {
+
+    header('Location: ./../../../user');
+    exit;
+}
+
+?>
+
+<?php
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: ./..');
@@ -15,11 +41,6 @@ $data = [
     "img"       => $_FILES['img'] ?? '',
     "price"     => htmlspecialchars(trim($_POST['price'] ?? '')),
 ];
-
-// echo '<pre>';
-// var_Dump($data);
-// echo '</pre>';
-// die;
 
 $errors = [];
 
@@ -64,7 +85,7 @@ if ($errors) {
     $_SESSION['data'] = $data;
     $_SESSION['add-errors'] = $errors;
 
-    header('Location: ./../new.php');
+    header('Location: ' . ROOT_PATH . '/pages/products/new.php');
     exit;
 }
 
@@ -104,13 +125,15 @@ if ($stmt) {
 
     if (mysqli_stmt_execute($stmt)) {
         $_SESSION['product-added'] = true;
+        $url = ROOT_PATH . '/pages/products/show.php/?id=' . mysqli_insert_id($conn);
 
-        header('Location: ./../new.php');
+        header('Location: ' . $url);
         exit;
     }
-} else {
-
-    $error_message = mysqli_error($conn);
-
-    echo $error_message;
 }
+//  else {
+
+//     $error_message = mysqli_error($conn);
+
+//     echo $error_message;
+// }
