@@ -25,10 +25,10 @@ if (isset($_GET['lang'])) {
                 <a href="./"><?= $data['shop'] ?></a>
             </li>
             <li class="link">
-                <a href="about.php"><?= $data['about'] ?></a>
+                <a href="contact.php"><?= $data['contact'] ?></a>
             </li>
             <li class="link">
-                <a href="contact.php"><?= $data['contact'] ?></a>
+                <a href="about.php"><?= $data['about'] ?></a>
             </li>
             <li class="link">
                 <a href="?lang=en"><?= $data['englisch'] ?></a>

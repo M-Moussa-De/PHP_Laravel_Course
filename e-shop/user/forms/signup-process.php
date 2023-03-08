@@ -59,7 +59,7 @@ if (empty($data['email'])) {
 } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
     $errors['email'] = 'Invalid E-Mail';
 } else if ($result->num_rows > 0) {
-    $errors['email'] = 'E-Mmail already taken';
+    $errors['email'] = 'E-Mail already taken';
 }
 
 // Password

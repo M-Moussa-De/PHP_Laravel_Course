@@ -25,8 +25,6 @@ if ($lang === 'ar') {
 <head>
 
     <!-- Start Links -->
-    <link rel="stylesheet" href="css/splide.min.css">
-    <link rel="stylesheet" href="css/splide-core.min.css">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
 

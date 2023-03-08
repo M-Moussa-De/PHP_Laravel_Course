@@ -106,3 +106,16 @@ VALUES (1, 'Cartoon Astronaut T-Shirt', 'adidas', 'products/f1.jpg', 'product'),
        (2, 'Cartoon Astronaut T-Shirt', 'adidas', 'products/n6.jpg', 'new_arrival'),
        (2, 'Cartoon Astronaut T-Shirt', 'adidas', 'products/n7.jpg', 'new_arrival'),
        (2, 'Cartoon Astronaut T-Shirt', 'adidas', 'products/n8.jpg', 'new_arrival');
+
+
+-- Messages
+CREATE TABLE IF NOT EXISTS messages (
+ id          INT PRIMARY KEY AUTO_INCREMENT,
+ name        VARCHAR (100) NOT NULL,
+ email       VARCHAR (100) NOT NULL,
+ comment     TEXT NOT NULL,
+ status      ENUM ('answered', 'pending') DEFAULT 'pending',
+ created_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
+ updated_at  DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ CONSTRAINT  messages_invalid_email CHECK (email REGEXP '^[a-zA-z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
+); 
