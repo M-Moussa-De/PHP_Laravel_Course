@@ -54,7 +54,9 @@ $errors = [];
 $nothing_to_update = false;
 $updated = false;
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
+
   $data = [
     "password"  => trim($_POST['password'] ?? ''),
     "phone"     => htmlspecialchars(trim($_POST['phone'] ?? '')),
@@ -63,27 +65,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
     "bio"   => htmlspecialchars(trim($_POST['bio'] ?? '')),
   ];
 
-  if (empty($data['password'] && empty($data['phone']) && empty($data['address']) && empty($data['img']) && empty($data['bio']))) {
+  $sql = '';
+
+  if (empty($data['password']) && empty($data['phone']) && empty($data['address']) && $data['img']['size'] == 0 && empty($data['bio'])) {
 
     $nothing_to_update = true;
   } else {
 
     $sql = 'UPDATE users set ';
     $flage = false;
-    // Password
+
     if ($data['password']) {
 
       if (strlen($data['password']) < 3) {
         $errors['password'] = 'Password must be 3 charachters length at least';
       } else {
-        $sql .= 'password = ' . password_hash($data['password'], PASSWORD_DEFAULT);
+        $sql .= 'password ';
         $flage = true;
       }
     }
 
     // Phone
     if ($data['phone']) {
-      $sql .=  $flage ? ', phone = ' . $data['phone'] :  ' phone = ' . $data['phone'];
+      $sql .=  $flage ? ', phone ' :  ' password ';
       $flage = true;
     }
 
@@ -92,22 +96,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
       if (strlen($data['address']) < 5) {
         $errors['address'] = 'Address must be 5 charachters length at least';
       } else {
-        $sql .=  $flage ? ', address = ' . $data['address'] :  ' address = ' . $data['address'];
+        $sql .=  $flage ? ', address '  :  ' address ';
         $flage = true;
       }
     }
 
     // Image
-    if ($data['img']) {
-
-      $name = $data['img']['name'];
-      $from = $data['img']['tmp_name'];
-      $to = __DIR__ . '/../../user/img/profile_imgs/' . $name;
-
-      move_uploaded_file($from, $to);
+    $img = false;
+    if ($data['img']['size'] > 0) {
+      $img = true;
     }
 
-    $updated = true;
+    echo $sql;
+    die;
+
+    $conn = include './../../db.php';
+    $res = $conn->query($sql);
+
+    if ($res) {
+      $updated = true;
+      if ($img) {
+        $name = $data['img']['name'];
+        $from = $data['img']['tmp_name'];
+        $to = __DIR__ . '/../../user/img/profile_imgs/' . $name;
+
+        move_uploaded_file($from, $to);
+      }
+    }
   }
 }
 
@@ -121,9 +136,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
     <div class="card">
       <div class="card-body">
         <?php if ($updated) : ?>
-          <div class="alert alert-success py-1">Profile updated successfully</div>
+          <div class="alert alert-success py-1 mx-auto w-50 mb-5">Profile updated successfully</div>
         <?php elseif ($nothing_to_update) : ?>
-          <div class="alert alert-warning py-1">Nothing to update</div>
+          <div class="alert alert-warning py-1 mx-auto w-50 mb-5">Nothing to update</div>
         <?php endif; ?>
         <div class="row">
 
@@ -229,11 +244,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
           <div class="mb-3">
             <label for="phone" class="form-label">Phone</label>
             <input type="text" name="phone" id="phone" class="form-control p_input" placeholder="00123456789" value="<?= $admin['phone'] ?? '' ?>">
-            <?php if (isset($errors['phone'])) : ?>
-              <small class="text-danger">
-                <?= $errors['phone'] ?>
-              </small>
-            <?php endif; ?>
           </div>
           <div class="mb-3">
             <label for="address" class="form-label">Address</label>
