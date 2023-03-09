@@ -53,6 +53,7 @@ if ($admin) {
 $errors = [];
 $nothing_to_update = false;
 $updated = false;
+$error_saving_updates = false;
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
@@ -72,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
     $nothing_to_update = true;
   } else {
 
-    $sql = 'UPDATE users set ';
+    $sql = 'UPDATE users SET ';
     $flage = false;
 
     if ($data['password']) {
@@ -80,14 +81,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
       if (strlen($data['password']) < 3) {
         $errors['password'] = 'Password must be 3 charachters length at least';
       } else {
-        $sql .= 'password ';
+        $pass = password_hash($data['password'], PASSWORD_DEFAULT);
+        $sql .= 'password = ' . $pass;
         $flage = true;
       }
     }
 
     // Phone
     if ($data['phone']) {
-      $sql .=  $flage ? ', phone ' :  ' password ';
+      $phone = $data['phone'];
+      $phone = mysqli_real_escape_string($conn, $phone);
+      $sql .=  $flage ? ", phone = '$phone'" : " phone = '$phone'";
       $flage = true;
     }
 
@@ -96,19 +100,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
       if (strlen($data['address']) < 5) {
         $errors['address'] = 'Address must be 5 charachters length at least';
       } else {
-        $sql .=  $flage ? ', address '  :  ' address ';
-        $flage = true;
+        $address = $data['address'];
+        $address = mysqli_real_escape_string($conn, $address);
+        $sql .=  $flage ? ", address = '$address'" :  " address =  '$address'";
+        $flag = true;
       }
     }
+
+    // Bio
+    if ($data['bio']) {
+      $bio = $data['bio'];
+      $bio = mysqli_real_escape_string($conn, $bio);
+      $sql .=  $flage ? ", bio = '$bio'"  :  " bio = '$bio'";
+    }
+
 
     // Image
     $img = false;
     if ($data['img']['size'] > 0) {
+      $name = $data['img']['name'];
+      $name = mysqli_real_escape_string($conn, $name);
+      $sql .= $flage ? ", img = '/profile_imgs/$name'" : " img = '/profile_imgs/$name'";
       $img = true;
     }
 
-    echo $sql;
-    die;
+    $sql .= " WHERE id = " . $_SESSION['id'] . " AND " . " type = " . 1 . ";";
+
+    // echo $sql;
+    // die;
 
     $conn = include './../../db.php';
     $res = $conn->query($sql);
@@ -122,6 +141,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
 
         move_uploaded_file($from, $to);
       }
+    } else {
+
+      $error_saving_updates = mysqli_error_list($conn);
     }
   }
 }
@@ -135,19 +157,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
 
     <div class="card">
       <div class="card-body">
+
+        <!-- Notifications -->
         <?php if ($updated) : ?>
           <div class="alert alert-success py-1 mx-auto w-50 mb-5">Profile updated successfully</div>
+          <?php $updated = null ?>
         <?php elseif ($nothing_to_update) : ?>
           <div class="alert alert-warning py-1 mx-auto w-50 mb-5">Nothing to update</div>
+          <?php $nothing_to_update = null ?>
+        <?php elseif ($error_saving_updates && isset($error_saving_updates['error'])) : ?>
+          <div class="alert alert-warning py-1 mx-auto w-50 mb-5">
+            <?= $error_saving_updates['error'] ?>
+            <?php $error_saving_updates = null ?>
+          </div>
+          <?php $nothing_to_update = '' ?>
         <?php endif; ?>
+        <!-- ./ Notifications -->
+
         <div class="row">
 
           <div class="col-12 col-md-6">
             <div class="text-center">
               <?php if ($admin['img']) : ?>
-                <img src="<?= ROOT_PATH . '/../user/img/' . $admin['img'] ?>" alt="profile" class="img-lg rounded-circle mb-3" />
+                <img src="<?= '/user/img' . $admin['img'] ?>" alt="profile" class="img-lg rounded-circle mb-3" />
               <?php else : ?>
-                <img src="<?= ROOT_PATH . '/../user/img/profile_imgs/default.png' ?>" alt="profile" class="img-lg rounded-circle mb-3" />
+                <img src="<?= '/user/img/profiles_imgs/default.png' ?>" alt="profile" class="img-lg rounded-circle mb-3" />
               <?php endif ?>
               <p class="text-muted"><?= $admin['bio'] ?? 'No bio yet, update your profile' ?></p>
             </div>
@@ -207,29 +241,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
           <div class="mb-3">
             <label for="firstname" class="form-label">Firstname</label>
             <input type="text" name="firstname" id="firstname" class="form-control p_input bg-transparent" placeholder="John" value="<?= $admin['firstname'] ?? '' ?>" disabled>
-            <?php if (isset($errors['firstname'])) : ?>
-              <small class="text-danger">
-                <?= $errors['firstname'] ?>
-              </small>
-            <?php endif; ?>
           </div>
           <div class="mb-3">
             <label for="lastname" class="form-label">Lastname</label>
             <input type="text" name="lastname" id="lastname" class="form-control p_input bg-transparent" placeholder="Doe" value="<?= $admin['lastname'] ?? '' ?>" disabled>
-            <?php if (isset($errors['lastname'])) : ?>
-              <small class="text-danger">
-                <?= $errors['lastname'] ?>
-              </small>
-            <?php endif; ?>
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="email" name="email" id="email" class="form-control p_input bg-transparent" placeholder="john@doe.com" value="<?= $admin['email'] ?? '' ?>" disabled>
-            <?php if (isset($errors['email'])) : ?>
-              <small class="text-danger">
-                <?= $errors['email'] ?>
-              </small>
-            <?php endif; ?>
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
@@ -244,10 +263,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
           <div class="mb-3">
             <label for="phone" class="form-label">Phone</label>
             <input type="text" name="phone" id="phone" class="form-control p_input" placeholder="00123456789" value="<?= $admin['phone'] ?? '' ?>">
+            <?php if (isset($errors['phone'])) : ?>
+              <small class="text-danger">
+                <?= $errors['phone'] ?>
+              </small>
+            <?php endif; ?>
           </div>
           <div class="mb-3">
             <label for="address" class="form-label">Address</label>
             <input type="text" name="address" id="address" class="form-control p_input" placeholder="Main St 111, City 12345" value="<?= $admin['address'] ?? '' ?>">
+            <?php if (isset($errors['address'])) : ?>
+              <small class="text-danger">
+                <?= $errors['address'] ?>
+              </small>
+            <?php endif; ?>
           </div>
           <div class="mb-3">
             <label for="profile_img" class="form-label">Image</label>

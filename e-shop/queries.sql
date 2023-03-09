@@ -120,4 +120,14 @@ CREATE TABLE IF NOT EXISTS messages (
  created_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
  updated_at  DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
  CONSTRAINT  messages_invalid_email CHECK (email REGEXP '^[a-zA-z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
-); 
+);
+
+-- Users
+CREATE TABLE IF NOT EXISTS todos (
+ id             INT PRIMARY KEY AUTO_INCREMENT,
+ user_id        INT,
+ task           VARCHAR (50),
+ status         BOOLEAN DEFAULT false,
+ created_at     DATETIME DEFAULT CURRENT_TIMESTAMP,
+ updated_at     DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
